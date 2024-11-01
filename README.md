@@ -3,4 +3,4 @@ a comprehensive projects in the blockchain field, the functions will cover all c
 # List
 1. happypto rust sdk [Go](https://github.com/0xhappyboy/happypto/tree/main/happypto-rs)
 2. happypto java sdk [Go](https://github.com/0xhappyboy/happypto/tree/main/happypto-j)
-3. happypto TG bot [Go](https://github.com/0xhappyboy/happypto/tree/main/happybot-tg)
+3. happybot TG bot [Go](https://github.com/0xhappyboy/happypto/tree/main/happybot-tg)
