@@ -1,6 +1,8 @@
 # happypto
-a comprehensive projects in the blockchain field, the functions will cover all common needs in the current blockchain field, for all chains.
+a cryptocurrency comprehensive robot
 # List
 1. happypto rust sdk [Go](https://github.com/0xhappyboy/happypto/tree/main/happypto-rs)
 2. happypto java sdk [Go](https://github.com/0xhappyboy/happypto/tree/main/happypto-j)
-3. happybot TG bot [Go](https://github.com/0xhappyboy/happypto/tree/main/happybot-tg)
+3. happypto evm trade TG bot [Go](https://github.com/0xhappyboy/happypto/tree/main/happybot-evm-tg)
+3. happypto solana trade TG bot [Go](https://github.com/0xhappyboy/happypto/tree/main/happybot-solana-tg)
+3. happypto aptos trade TG bot [Go](https://github.com/0xhappyboy/happypto/tree/main/happybot-aptos-tg)
