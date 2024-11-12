@@ -1,4 +1,4 @@
-mod network;
-mod wallet;
-mod utils;
-mod scout;
+pub mod network;
+pub mod scout;
+pub mod utils;
+pub mod wallet;

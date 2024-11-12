@@ -1,11 +1,11 @@
 /*! used to simplify operations on aptos networks. */
-mod account;
-mod client;
-mod config;
-mod faucet;
-mod net;
-mod nft;
-mod rest;
-mod token;
-mod transfer;
-mod utils;
+pub mod account;
+pub mod client;
+pub mod config;
+pub mod faucet;
+pub mod net;
+pub mod nft;
+pub mod rest;
+pub mod token;
+pub mod transfer;
+pub mod utils;
