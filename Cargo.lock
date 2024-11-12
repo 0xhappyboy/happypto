@@ -1422,12 +1422,14 @@ dependencies = [
 ]
 
 [[package]]
-name = "happypto-rs"
+name = "happypto"
 version = "0.1.0"
 dependencies = [
  "alloy",
  "eyre",
  "futures-util",
+ "rand",
+ "tempfile",
  "tokio",
 ]
 
