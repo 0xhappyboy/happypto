@@ -3,8 +3,8 @@ a comprehensive SDK in the blockchain field, the functions will cover all common
 # Other List
 1. happypto java sdk [Go](https://github.com/0xhappyboy/happypto-j/tree/main)
 # Configuration
+## Cargo.toml
 ```
-### Cargo.toml
 [dependencies]
 happypto = {git = "https://github.com/0xhappyboy/happypto", branch = "main"}
 tokio = {version = "1.4", features = ["full"]}
@@ -12,7 +12,9 @@ tokio = {version = "1.4", features = ["full"]}
 [patch.crates-io]
 merlin = {git = "https://github.com/aptos-labs/merlin"}
 x25519-dalek = {git = "https://github.com/aptos-labs/x25519-dalek", branch = "zeroize_v1"}
-### .cargo/config.toml
+```
+## .cargo/config.toml
+```
 [build]
 rustflags = ["--cfg", "tokio_unstable"]
 ```
