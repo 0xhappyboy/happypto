@@ -2,6 +2,21 @@
 name = "happypto"
 version = "0.1.0"
 edition = "2021"
+authors = ["happyboy <superhappyboy1995@gmail.com>"]
+description = "a comprehensive SDK in the blockchain field, the functions will cover all common needs in the current blockchain field, for all chains."
+keywords = [
+  "solana",
+  "ethereum",
+  "aptos",
+  "blockchain",
+]
+license = "GPL-3.0"
+readme = "README.md"
+repository = "https://github.com/0xhappyboy/happypto"
+
+[lib]
+name = "happypto"
+
 
 [dependencies]
 alloy = { version = "0.5.4", features = ["full"] }
