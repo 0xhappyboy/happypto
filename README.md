@@ -6,7 +6,7 @@ a comprehensive SDK in the blockchain field, the functions will cover all common
 ```
 ### Cargo.toml
 [dependencies]
-aptos-light-sdk = {git = "https://github.com/0xhappyboy/happypto", branch = "main"}
+happypto = {git = "https://github.com/0xhappyboy/happypto", branch = "main"}
 tokio = {version = "1.4", features = ["full"]}
 
 [patch.crates-io]
