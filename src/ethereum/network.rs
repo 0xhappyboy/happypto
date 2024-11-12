@@ -24,12 +24,12 @@ sol!(
 const ETH_USD_FEED: Address = address!("5f4eC3Df9cbd43714FE2740f5E3616155c5b8419");
 
 /// ethereum network abstraction
-pub struct Network {
+pub struct EthereumNetwork {
     provider: RootProvider<Http<Client>>,
 }
 
-impl Network {
-    pub fn new(rpc: &str) -> Result<Network> {
+impl EthereumNetwork {
+    pub fn new(rpc: &str) -> Result<EthereumNetwork> {
         Ok(Self {
             provider: ProviderBuilder::new().on_http(rpc.trim().parse()?),
         })
