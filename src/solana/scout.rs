@@ -1,14 +1,29 @@
+/// solana network scout, includes some useful solana network scout capabilities
 use std::str::FromStr;
+use std::sync::atomic::AtomicU64;
+use std::sync::atomic::Ordering;
+use std::thread::sleep;
+use std::time::Duration;
 
-use eyre::Ok;
 use eyre::Result;
+use log::error;
 use solana_sdk::pubkey::Pubkey;
 use solana_sdk::signature::Signature;
 use solana_transaction_status::EncodedConfirmedTransactionWithStatusMeta;
 use solana_transaction_status::UiTransactionEncoding;
 
+use super::network::Block;
 use super::network::Mode;
 use super::network::SolanaNetwork;
+use super::network::Transaction;
+
+/// block scan interval (ms)
+const BLOCK_SCAN_INTERVAL: u64 = 400;
+
+/// block data handle function type
+type FnBlockDataHandle = fn(&Scout, Block);
+/// transaction data handle function type
+type FnTradeDataHandle = fn(&Scout, Transaction);
 
 pub struct Scout {
     mode: Mode,
@@ -30,6 +45,7 @@ impl Scout {
     }
     /// get signature history of specified address
     ///
+    /// Example
     /// ```
     /// let scout = Scout::new(solana::network::Mode::MAIN).unwrap();
     /// let list = scout.get_signature_history_by_address("");
@@ -47,6 +63,7 @@ impl Scout {
     }
     /// parse transaction details by string
     ///
+    /// Example
     /// ```
     /// let scout = Scout::new(solana::network::Mode::MAIN).unwrap();
     /// let list = scout.get_signature_history_by_address("");
@@ -70,6 +87,58 @@ impl Scout {
             .unwrap();
         transaction_info
     }
+    /// polling to process the transaction data of the last block
+    ///
+    /// # Params
+    ///
+    /// - `block_hanlde` : block data processing function type
+    /// - `trade_hanlde` : trade data processing function type
+    ///
+    /// Example
+    /// ```
+    /// fn block_handle(scount: &Scout, t: Transaction){
+    ///    // .....
+    /// }
+    ///
+    /// fn trade_handle(scount: &Scout, t: Transaction){
+    ///    // .....
+    /// }
+    ///
+    /// let scout = Scout::new(Mode::MAIN).unwrap();
+    /// scout.poll_handle_transaction_of_last_block(block_handle,trade_handle);
+    /// ```
+    ///
+    pub fn poll_handle_transaction_of_last_block(
+        &self,
+        block_hanlde: Option<FnBlockDataHandle>,
+        trade_hanlde: Option<FnTradeDataHandle>,
+    ) {
+        // thread-safe slot temporary storage
+        let mut slot_storage = AtomicU64::new(0);
+        loop {
+            let slot = self.network.as_ref().get_slot();
+            if slot != slot_storage.load(Ordering::SeqCst) {
+                match self.network.rpc_get_block(slot) {
+                    Ok(block) => {
+                        if !block_hanlde.is_none() {
+                            block_hanlde.unwrap()(self, block.clone());
+                        }
+                        if !trade_hanlde.is_none() {
+                            for t in block.transactions {
+                                // handle trade
+                                todo!()
+                            }
+                        }
+                    }
+                    Err(e) => error!("{}", e),
+                }
+            } else {
+                continue;
+            }
+            slot_storage.store(slot, Ordering::SeqCst);
+            sleep(Duration::from_millis(BLOCK_SCAN_INTERVAL));
+        }
+    }
     /// get last block transaction list
     pub fn get_last_block(&self) {
         todo!()
@@ -80,14 +149,5 @@ impl Scout {
     }
 }
 
-struct Transaction {
-    raw: String,
-}
-
-impl Transaction {
-    pub fn new(raw: String) -> Result<Self> {
-        Ok(Self {
-            raw: String::from(""),
-        })
-    }
-}
+pub struct Filter {}
+impl Filter {}
