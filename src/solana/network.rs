@@ -1,5 +1,3 @@
-/// solana network core, including rpc related operations and re-encapsulation of some key data structures
-use crate::aptos::client;
 use eyre::Result;
 use log::error;
 use log::info;
@@ -7,9 +5,7 @@ use serde::Deserialize;
 use serde_json::json;
 use solana_client::rpc_client::RpcClient;
 use solana_client::rpc_request::RpcRequest;
-use solana_client::rpc_response::Response;
 use solana_sdk::epoch_info::EpochInfo;
-use solana_transaction_status::EncodedConfirmedBlock;
 
 use super::config::SOLANA_DEV_NET_URL;
 use super::config::SOLANA_MAIN_NET_URL;

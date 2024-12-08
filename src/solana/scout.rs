@@ -1,3 +1,4 @@
+use std::str;
 /// solana network scout, includes some useful solana network scout capabilities
 use std::str::FromStr;
 use std::sync::atomic::AtomicU64;
@@ -87,6 +88,32 @@ impl Scout {
             .unwrap();
         transaction_info
     }
+    /// handle last block
+    pub fn handle_last_block(
+        &self,
+        block_hanlde: Option<FnBlockDataHandle>,
+        trade_hanlde: Option<FnTradeDataHandle>,
+    ) {
+        // thread-safe slot temporary storage
+        let mut slot_storage = AtomicU64::new(0);
+        let slot = self.network.as_ref().get_slot();
+        if slot != slot_storage.load(Ordering::SeqCst) {
+            match self.network.rpc_get_block(slot) {
+                Ok(block) => {
+                    if !block_hanlde.is_none() {
+                        block_hanlde.unwrap()(self, block.clone());
+                    }
+                    if !trade_hanlde.is_none() {
+                        for t in block.transactions {
+                            // handle trade
+                            todo!()
+                        }
+                    }
+                }
+                Err(e) => error!("{}", e),
+            }
+        }
+    }
     /// polling to process the transaction data of the last block
     ///
     /// # Params
@@ -108,7 +135,7 @@ impl Scout {
     /// scout.poll_handle_transaction_of_last_block(block_handle,trade_handle);
     /// ```
     ///
-    pub fn poll_handle_transaction_of_last_block(
+    pub fn poll_last_block(
         &self,
         block_hanlde: Option<FnBlockDataHandle>,
         trade_hanlde: Option<FnTradeDataHandle>,
@@ -149,5 +176,10 @@ impl Scout {
     }
 }
 
-pub struct Filter {}
-impl Filter {}
+/// filters for block data structures
+pub struct BlockFilter {}
+impl BlockFilter {}
+
+/// filters for transaction data structures
+pub struct TransactionFilter {}
+impl TransactionFilter {}
