@@ -1,0 +1,34 @@
+[package]
+name = "happypto_solana"
+version = "0.1.0"
+edition = "2021"
+authors = ["happyboy <superhappyboy1995@gmail.com>"]
+description = "a comprehensive SDK in the blockchain field, the functions will cover all common needs in the current blockchain field, for all chains."
+keywords = [
+  "solana",
+  "blockchain",
+]
+license = "GPL-3.0"
+readme = "README.md"
+repository = "https://github.com/0xhappyboy/happypto"
+
+[lib]
+name = "happypto_solana"
+
+[dependencies]
+tokio = { version = "1.4", features = ["full"] }
+eyre = "0.6.12"
+futures-util = "0.3.31"
+rand = "0.7.0"
+tempfile = "3.13.0"
+anyhow = "1.0.86"
+lazy_static = "1.5.0"
+once_cell = "1.19.0"
+url = "2.5.2"
+reqwest = "0.12.5"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0.107"
+solana-client = "2.1.0"
+solana-sdk = "2.1.0"
+solana-transaction-status = "2.1.0"
+log = "0.4.22"

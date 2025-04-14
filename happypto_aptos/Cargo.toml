@@ -1,12 +1,10 @@
 [package]
-name = "happypto"
+name = "happypto_aptos"
 version = "0.1.0"
 edition = "2021"
 authors = ["happyboy <superhappyboy1995@gmail.com>"]
 description = "a comprehensive SDK in the blockchain field, the functions will cover all common needs in the current blockchain field, for all chains."
 keywords = [
-  "solana",
-  "ethereum",
   "aptos",
   "blockchain",
 ]
@@ -15,11 +13,9 @@ readme = "README.md"
 repository = "https://github.com/0xhappyboy/happypto"
 
 [lib]
-name = "happypto"
-
+name = "happypto_aptos"
 
 [dependencies]
-alloy = { version = "0.5.4", features = ["full"] }
 tokio = { version = "1.4", features = ["full"] }
 eyre = "0.6.12"
 futures-util = "0.3.31"
@@ -35,9 +31,6 @@ url = "2.5.2"
 reqwest = "0.12.5"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0.107"
-solana-client = "2.1.0"
-solana-sdk = "2.1.0"
-solana-transaction-status = "2.1.0"
 log = "0.4.22"
 
 [patch.crates-io]
