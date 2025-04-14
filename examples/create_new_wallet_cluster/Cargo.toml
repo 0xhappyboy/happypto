@@ -1,0 +1,7 @@
+[package]
+name = "create_new_wallet_cluster"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+happypto_solana={path="../../happypto_solana"}

@@ -1,7 +1,7 @@
 [package]
 name = "happypto_evm"
 version = "0.1.0"
-edition = "2021"
+edition = "2024"
 authors = ["happyboy <superhappyboy1995@gmail.com>"]
 description = "a comprehensive SDK in the blockchain field, the functions will cover all common needs in the current blockchain field, for all chains."
 keywords = [

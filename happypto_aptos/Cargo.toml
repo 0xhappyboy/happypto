@@ -1,7 +1,7 @@
 [package]
 name = "happypto_aptos"
 version = "0.1.0"
-edition = "2021"
+edition = "2024"
 authors = ["happyboy <superhappyboy1995@gmail.com>"]
 description = "a comprehensive SDK in the blockchain field, the functions will cover all common needs in the current blockchain field, for all chains."
 keywords = [
@@ -16,22 +16,11 @@ repository = "https://github.com/0xhappyboy/happypto"
 name = "happypto_aptos"
 
 [dependencies]
-tokio = { version = "1.4", features = ["full"] }
-eyre = "0.6.12"
-futures-util = "0.3.31"
-rand = "0.7.0"
-tempfile = "3.13.0"
+aptos-sdk = { git = "https://github.com/aptos-labs/aptos-core", branch = "devnet" }
+tokio = {version = "1.4", features = ["full"]}
 anyhow = "1.0.86"
-aptos-crypto = {git = "https://github.com/aptos-labs/aptos-core", branch = "devnet"}
-aptos-sdk = {git = "https://github.com/aptos-labs/aptos-core", branch = "devnet"}
-aptos-types = {git = "https://github.com/aptos-labs/aptos-core", branch = "devnet"}
-lazy_static = "1.5.0"
 once_cell = "1.19.0"
 url = "2.5.2"
-reqwest = "0.12.5"
-serde = { version = "1.0", features = ["derive"] }
-serde_json = "1.0.107"
-log = "0.4.22"
 
 [patch.crates-io]
 merlin = { git = "https://github.com/aptos-labs/merlin" }
