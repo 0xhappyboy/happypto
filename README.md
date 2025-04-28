@@ -1,7 +1,5 @@
 # happypto
-A quantitative trading software focused on cryptocurrency.
-<br/>
-all chains. all terminal.
+a quantitative trading software focusing on cryptocurrency for multiple chains and multiple terminals.
 # Other List
 1. happypto java sdk [Go](https://github.com/0xhappyboy/happypto-j/tree/main)
 # Configuration
